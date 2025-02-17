@@ -1,14 +1,9 @@
 from PIL import Image
 import cv2
 import torch
-import math
 import src.plate_detector.function.utils_rotate as utils_rotate
 import src.plate_detector.function.helper as helper
-# from IPython.display import display
-import os
 import numpy as np
-
-
 
 class Model:
     def __init__(self):
@@ -23,9 +18,10 @@ class Model:
         
     def predict(self, img_file):
         img = cv2.imdecode(np.fromstring(img_file.read(), np.uint8), cv2.IMREAD_UNCHANGED)
-        img = cv2.flip(img, 1)
+        # img = cv2.flip(img, 1)
         plates = self.__getPlates(img)
         list_plates = plates.pandas().xyxy[0].values.tolist()
+        print("list_plates",list_plates)
         list_read_plates = set()
         list_img_plate = []
         count = 0
