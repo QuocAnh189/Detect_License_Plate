@@ -9,7 +9,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install --no-cache-dir opencv-python-headless
 RUN pip install wheel setuptools pip --upgrade
 
-COPY src /app/src
 COPY . .
 
 RUN chmod -R 755 /app/src/
