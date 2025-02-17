@@ -15,6 +15,6 @@ RUN chmod -R 755 /app/src/
 
 # EXPOSE 5000
 
-# CMD ["python", "src/app.py"]
+CMD ["python", "src/app.py"]
 # CMD ["flask", "run", "--host=0.0.0.0", "--debug"]
-CMD ["flask", "run", "--host=0.0.0.0"]
+# CMD ["flask", "run", "--host=0.0.0.0"]
