@@ -13,7 +13,7 @@
 
 1. Clone the repo and cd into it
 2. In `root folder` Run `docker-compose up --build`
-3. Visit `localhost:4000` or `127.0.0.1:4000` in your postman
+3. Visit `localhost:80` or `127.0.0.1:80` in your postman
 
 Contact me with any questions!<br>
 
