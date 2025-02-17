@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 from src.plate_detector.detector import model  
-import cv2
 
 def create_app():
     app = Flask(__name__)
@@ -18,7 +17,11 @@ def create_app():
         return jsonify({
             "license_plate_detect": list(plate_list),
             "crop_img_list": crop_img_list
-            # "crop_img": str(list(crop_img_list[0]))
         })
+    
+        # return jsonify({
+        #     "license_plate_detect": "license_plate_detect",
+        #     "crop_img_list": "crop_img_list"
+        # })
 
     return app

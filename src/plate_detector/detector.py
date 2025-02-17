@@ -21,7 +21,6 @@ class Model:
         # img = cv2.flip(img, 1)
         plates = self.__getPlates(img)
         list_plates = plates.pandas().xyxy[0].values.tolist()
-        print("list_plates",list_plates)
         list_read_plates = set()
         list_img_plate = []
         count = 0
