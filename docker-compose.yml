@@ -4,7 +4,7 @@ services:
     container_name: flask_plate_detector
     restart: always
     ports:
-      - "80:5000"
+      - "8001:5000"
     volumes:
       - ./src:/app/src
     environment:
