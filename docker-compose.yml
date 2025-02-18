@@ -10,3 +10,4 @@ services:
     environment:
       - FLASK_APP=src.app
       - FLASK_ENV=production
+      - CLOUDINARY_URL=cloudinary://748983295927676:f8g7nRIpCa-DjOiuP1QbP0YFiT4@dadvtny30

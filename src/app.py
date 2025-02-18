@@ -1,9 +1,19 @@
 import sys
 import os
-# sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# import cloudinary
+# import cloudinary.uploader
+# from dotenv import load_dotenv 
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+
+# load_dotenv()
+# cloudinary.config(
+#     cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+#     api_key=os.getenv("CLOUDINARY_API_KEY"),
+#     api_secret=os.getenv("CLOUDINARY_API_SECRET")
+# )
 
 from src import create_app
 
