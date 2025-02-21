@@ -11,3 +11,6 @@ services:
       - FLASK_APP=src.app
       - FLASK_ENV=production
       - CLOUDINARY_URL=cloudinary://748983295927676:f8g7nRIpCa-DjOiuP1QbP0YFiT4@dadvtny30
+      - MINIO_ENDPOINT=139.59.250.218:9000
+      - MINIO_ACCESS_KEY=1d1KqQif0abfpxQaxyy0
+      - MINIO_SECRET_KEY=i9n4WD3PFSzc6XFZkow69UWV5dGx6bZbmMIjaNlU
