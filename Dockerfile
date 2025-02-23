@@ -2,6 +2,8 @@ FROM python:3.11.3
 
 WORKDIR /app
 
+EXPOSE 50051
+
 # Cài đặt các thư viện hệ thống cần thiết
 RUN apt-get update && apt-get install -y \
     git \
@@ -18,4 +20,4 @@ COPY . .
 
 RUN chmod -R 755 /app/src/
 
-CMD ["python", "src/app.py"]
+CMD ["python", "-u" ,"src/grpc_server.py"]
