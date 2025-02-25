@@ -28,7 +28,8 @@ minio_client = Minio(
     MINIO_ENDPOINT,
     access_key=MINIO_ACCESS_KEY,
     secret_key=MINIO_SECRET_KEY,
-    secure=False
+   # secure=False  # For HTTP
+    secure=True  # For HTTPS
 )
 
 if not minio_client.bucket_exists(BUCKET_NAME):

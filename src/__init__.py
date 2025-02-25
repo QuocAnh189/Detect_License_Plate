@@ -23,10 +23,10 @@ minio_client = Minio(
     secure=True  # For HTTPS
 )
 
-print(MINIO_ENDPOINT,MINIO_ACCESS_KEY,MINIO_SECRET_KEY,BUCKET_NAME,FOLDER_NAME)
+print(MINIO_ENDPOINT,MINIO_ACCESS_KEY,MINIO_SECRET_KEY,BUCKET_NAME,)
 
-# if not minio_client.bucket_exists(BUCKET_NAME):
-#     minio_client.make_bucket(BUCKET_NAME)
+if not minio_client.bucket_exists(BUCKET_NAME):
+    minio_client.make_bucket(BUCKET_NAME)
 
 def upload_to_minio(file_path, file_name):
     try:
