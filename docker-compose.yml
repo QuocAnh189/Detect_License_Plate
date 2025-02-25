@@ -8,7 +8,7 @@ services:
       - FLASK_APP=src.app
       - FLASK_ENV=production
       # - MINIO_ENDPOINT=139.59.250.218:9000
-      - MINIO_ENDPOINT=https://goparking.duckdns.org:9000
+      - MINIO_ENDPOINT=goparking.duckdns.org:9000
       - MINIO_ACCESS_KEY=1d1KqQif0abfpxQaxyy0
       - MINIO_SECRET_KEY=i9n4WD3PFSzc6XFZkow69UWV5dGx6bZbmMIjaNlU
     command: python -u src/grpc_server.py
