@@ -2,6 +2,8 @@ FROM python:3.11.3
 
 WORKDIR /app
 
+COPY nginx.conf /etc/nginx/nginx.conf
+
 EXPOSE 50051
 
 # Cài đặt các thư viện hệ thống cần thiết

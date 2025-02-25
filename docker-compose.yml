@@ -1,5 +1,5 @@
 services:
-  flask_app:
+  grpc_app:
     build: .
     container_name: flask_plate_detector
     ports:
@@ -8,7 +8,20 @@ services:
       - FLASK_APP=src.app
       - FLASK_ENV=production
       # - MINIO_ENDPOINT=139.59.250.218:9000
-      - MINIO_ENDPOINT=goparking.duckdns.org:9000
+      - MINIO_ENDPOINT=https://goparking.duckdns.org:9000
       - MINIO_ACCESS_KEY=1d1KqQif0abfpxQaxyy0
       - MINIO_SECRET_KEY=i9n4WD3PFSzc6XFZkow69UWV5dGx6bZbmMIjaNlU
     command: python -u src/grpc_server.py
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_reverse_proxy
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - /etc/letsencrypt/live/license-detect.duckdns.org/fullchain.pem:/etc/nginx/certs/fullchain.pem
+      - /etc/letsencrypt/live/license-detect.duckdns.org/privkey.pem:/etc/nginx/certs/privkey.pem
+    ports:
+      - "9080:80" # HTTP
+      - "9443:443" # HTTPS
+    depends_on:
+      - grpc_app
