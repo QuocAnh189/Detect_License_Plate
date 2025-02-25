@@ -38,7 +38,7 @@ def upload_to_minio(file_path, file_name):
     try:
         object_name = f"{FOLDER_NAME}/{file_name}"
         minio_client.fput_object(BUCKET_NAME, object_name, file_path)
-        file_url = f"http://{MINIO_ENDPOINT}/{BUCKET_NAME}/{object_name}"
+        file_url = f"https://{MINIO_ENDPOINT}/{BUCKET_NAME}/{object_name}"
         return file_url
     except S3Error as e:
         print(f"MinIO Error: {e}")
