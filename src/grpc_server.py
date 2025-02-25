@@ -17,7 +17,7 @@ from minio.error import S3Error
 import io
 
 # Cấu hình MinIO
-MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT", "139.59.250.218:9000")
+MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT", "goparking.duckdns.org:9000")
 MINIO_ACCESS_KEY = os.getenv("MINIO_ACCESS_KEY", "1d1KqQif0abfpxQaxyy0")
 MINIO_SECRET_KEY = os.getenv("MINIO_SECRET_KEY", "i9n4WD3PFSzc6XFZkow69UWV5dGx6bZbmMIjaNlU")
 BUCKET_NAME = "goparking"
