@@ -17,9 +17,9 @@ from minio.error import S3Error
 import io
 
 # Cấu hình MinIO
-MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT", "goparking.duckdns.org:9000")
-MINIO_ACCESS_KEY = os.getenv("MINIO_ACCESS_KEY", "1d1KqQif0abfpxQaxyy0")
-MINIO_SECRET_KEY = os.getenv("MINIO_SECRET_KEY", "i9n4WD3PFSzc6XFZkow69UWV5dGx6bZbmMIjaNlU")
+MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT", "localhost:9000")
+MINIO_ACCESS_KEY = os.getenv("MINIO_ACCESS_KEY", "b8psyEWauoDjytZjizEz")
+MINIO_SECRET_KEY = os.getenv("MINIO_SECRET_KEY", "LkGSk5JoldvbLK9t8NzFKkf8QtREV46F4s6jBz5h")
 BUCKET_NAME = "goparking"
 FOLDER_NAME = "crop_img"
 
@@ -28,18 +28,20 @@ minio_client = Minio(
     MINIO_ENDPOINT,
     access_key=MINIO_ACCESS_KEY,
     secret_key=MINIO_SECRET_KEY,
-   # secure=False  # For HTTP
-    secure=True  # For HTTPS
+    secure=False  # For HTTP or Docker Local
+    # secure=True  # For HTTPS
 )
 
-if not minio_client.bucket_exists(BUCKET_NAME):
-    minio_client.make_bucket(BUCKET_NAME)
+#For HTTPS
+# if not minio_client.bucket_exists(BUCKET_NAME):
+#     minio_client.make_bucket(BUCKET_NAME)
 
 def upload_to_minio(file_path, file_name):
     try:
         object_name = f"{FOLDER_NAME}/{file_name}"
         minio_client.fput_object(BUCKET_NAME, object_name, file_path)
-        file_url = f"https://{MINIO_ENDPOINT}/{BUCKET_NAME}/{object_name}"
+        # file_url = f"https://{MINIO_ENDPOINT}/{BUCKET_NAME}/{object_name}" For HTTPS
+        file_url = f"http://{MINIO_ENDPOINT}/{BUCKET_NAME}/{object_name}"
         return file_url
     except S3Error as e:
         print(f"MinIO Error: {e}")
