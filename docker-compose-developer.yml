@@ -7,8 +7,9 @@ services:
     environment:
       # - FLASK_APP=src.app
       # - FLASK_ENV=development
-      - MINIO_ENDPOINT=localhost:9000
+      - MINIO_ENDPOINT=parking.minio:9000
       - MINIO_ACCESS_KEY=3SYhDzVQBrLI9SzRB1zR
       - MINIO_SECRET_KEY=8LJFPwOg4jscApFpAwawnbTKHNcyTd6y60mOzZbs
     command: python -u src/grpc_server.py
-
+    
+# docker network connect parking plate_detector

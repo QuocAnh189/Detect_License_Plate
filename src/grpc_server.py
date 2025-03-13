@@ -17,9 +17,9 @@ from minio.error import S3Error
 import io
 
 # Cấu hình MinIO
-MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT", "localhost:9000")
-MINIO_ACCESS_KEY = os.getenv("MINIO_ACCESS_KEY", "b8psyEWauoDjytZjizEz")
-MINIO_SECRET_KEY = os.getenv("MINIO_SECRET_KEY", "LkGSk5JoldvbLK9t8NzFKkf8QtREV46F4s6jBz5h")
+MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT", "parking.minio:9000")
+MINIO_ACCESS_KEY = os.getenv("MINIO_ACCESS_KEY", "3SYhDzVQBrLI9SzRB1zR")
+MINIO_SECRET_KEY = os.getenv("MINIO_SECRET_KEY", "8LJFPwOg4jscApFpAwawnbTKHNcyTd6y60mOzZbs")
 BUCKET_NAME = "goparking"
 FOLDER_NAME = "crop_img"
 
@@ -41,7 +41,7 @@ def upload_to_minio(file_path, file_name):
         object_name = f"{FOLDER_NAME}/{file_name}"
         minio_client.fput_object(BUCKET_NAME, object_name, file_path)
         # file_url = f"https://{MINIO_ENDPOINT}/{BUCKET_NAME}/{object_name}" For HTTPS
-        file_url = f"http://{MINIO_ENDPOINT}/{BUCKET_NAME}/{object_name}"
+        file_url = f"http://localhost:9000/{BUCKET_NAME}/{object_name}"
         return file_url
     except S3Error as e:
         print(f"MinIO Error: {e}")
@@ -81,7 +81,7 @@ class PlateDetectionServicer(pb2_grpc.PlateDetectionServicer):
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=4))
     pb2_grpc.add_PlateDetectionServicer_to_server(PlateDetectionServicer(), server)
-    server.add_insecure_port('[::]:50051')
+    server.add_insecure_port('0.0.0.0:50051')
     print("gRPC server is running on port 50051...")
     server.start()
     server.wait_for_termination()
