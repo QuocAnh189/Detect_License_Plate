@@ -5,19 +5,10 @@ services:
     ports:
       - "50051:50051"
     environment:
-      - FLASK_APP=src.app
-      - FLASK_ENV=development
+      # - FLASK_APP=src.app
+      # - FLASK_ENV=development
       - MINIO_ENDPOINT=localhost:9000
-      - MINIO_ACCESS_KEY=b8psyEWauoDjytZjizEz
-      - MINIO_SECRET_KEY=LkGSk5JoldvbLK9t8NzFKkf8QtREV46F4s6jBz5h
+      - MINIO_ACCESS_KEY=3SYhDzVQBrLI9SzRB1zR
+      - MINIO_SECRET_KEY=8LJFPwOg4jscApFpAwawnbTKHNcyTd6y60mOzZbs
     command: python -u src/grpc_server.py
 
-  # minio:
-  #   image: minio/minio
-  #   container_name: minio
-  #   ports:
-  #     - "9000:9000"
-  #   environment:
-  #     - MINIO_ROOT_USER=b8psyEWauoDjytZjizEz
-  #     - MINIO_ROOT_PASSWORD=LkGSk5JoldvbLK9t8NzFKkf8QtREV46F4s6jBz5h
-  #   command: server /data
